@@ -18,3 +18,6 @@ module.exports = {
 `npm run build`
 
 ## 仕様
+### 使ったもの
+- Vue-Cli
+- Vuetify
