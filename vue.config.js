@@ -1,4 +1,7 @@
 module.exports = {
-    publicPath: '/vuecli-quiz/',
-    outputDir: 'docs'
+  "publicPath": "/vuecli-quiz/",
+  "outputDir": "docs",
+  "transpileDependencies": [
+    "vuetify"
+  ]
 }
