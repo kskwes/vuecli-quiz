@@ -261,7 +261,7 @@ export default {
         },
         // 問題を進める処理
         getNextQuiz: function() {
-            this.currentNum ++
+            this.getStartQuiz()
             this.isChecked = false
 
             this.selectedItem.push(this.checkedItem)
@@ -272,14 +272,7 @@ export default {
         },
         // 結果を出す処理
         getResultQuiz: function() {
-            this.currentNum ++
-            this.isChecked = false
-
-            this.selectedItem.push(this.checkedItem)
-
-            if (this.checkedItem.isCorrect) {
-                this.fixedSelectItems.push(this.checkedItem)
-            }
+            this.getNextQuiz()
 
             this.totalPoints = this.fixedSelectItems.length
         },
