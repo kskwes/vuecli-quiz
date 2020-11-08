@@ -22,6 +22,7 @@
 
         <!-- クイズページ -->
         <div class="quiz-question">
+            <!-- 問題部分もVuetifyでできるかも（<v-card></v-card>） -->
             <!-- クイズの問題文 -->
             <div class="quiz-question__title">
 
@@ -98,8 +99,7 @@ export default {
         // スタートボタンの処理
         getStartQuiz: function() {
             // currentNumを1増やす
-            // 
-        }
+        },
     }
 }
 </script>
