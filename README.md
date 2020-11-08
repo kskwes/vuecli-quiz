@@ -18,6 +18,9 @@ module.exports = {
 `npm run build`
 
 ## 仕様
-### 使ったもの
+- 合計5問の3択問題
+- 最後に合計正解数を表示
+- 問題は```questionList```に格納
+## 使ったもの
 - Vue-Cli
 - Vuetify
