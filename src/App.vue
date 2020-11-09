@@ -21,7 +21,8 @@
                 <v-card-actions>
                     <!-- 「スタート」ボタン -->
                     <v-btn
-                        color="lighten-2"
+                        color="white"
+                        class="teal accent-4 font-weight-bold"
                         text
                         @click="getStartQuiz()"
                     >
@@ -36,12 +37,16 @@
             v-else-if="currentNum > 0 && currentNum <= questionNum"
             >
                 <div
-                v-for="question in questionList"
+                v-for="(question, index) in questionList"
                 :key="question.id"
                 :class='{ "active": currentNum === question.id }'
                 class="quiz-question"
                 >
                 <v-card-title>{{ question.question }}</v-card-title>
+                <v-img
+                width="200"
+                :src="'/vuecli-quiz/img/' + imgSrc + '-' + (index + 1) + '.jpg'">
+                </v-img>
                 <v-card-text>
                     <div
                     v-for="(option, index) in question.options"
@@ -67,7 +72,8 @@
                 <v-card-actions>
                     <!-- 「次へ」ボタン -->
                     <v-btn
-                    color="lighten-2"
+                    color="white"
+                    class="light-blue accent-4 font-weight-bold"
                     text
                     @click="getNextQuiz()"
                     :disabled="!isChecked"
@@ -77,7 +83,8 @@
                     </v-btn>
                     <!-- 「結果」ボタン -->
                     <v-btn
-                    color="lighten-2"
+                    color="white"
+                    class="cyan accent-4 font-weight-bold"
                     text
                     @click="getResultQuiz()"
                     v-else-if="currentNum >= questionNum"
@@ -96,20 +103,26 @@
                 <v-card-text>
                     <div>
                         <span v-if="userName !== null">{{ userName }}さん</span>
-                        <span v-else>名無しさん</span>
+                        <span v-else>{{ defaultName }}さん</span>
                         は
                         <span>{{ totalPoints }}</span>
                         点でした
                     </div>
-                    <div>
+                    <div class="selected">
                         <p>あなたの回答</p>
-                        <ul>
+                        <ul class="selected__list">
                             <li
                             v-for="item in selectedItem"
+                            class="selected__item"
                             :key="item.option"
                             >
                             {{ item.option }}
-                            <span v-if="item.isCorrect">正解！</span>
+                            <span
+                            v-if="item.isCorrect"
+                            class="font-weight-bold"
+                            >
+                            正解！
+                            </span>
                             </li>
                         </ul>
                     </div>
@@ -118,7 +131,8 @@
                 <v-card-actions>
                     <!-- 「リセット」ボタン -->
                     <v-btn
-                    color="lighten-2"
+                    color="white"
+                    class="green darken-1 font-weight-bold"
                     text
                     @click="getResetQuiz()"
                     >
@@ -139,16 +153,18 @@ export default {
             optionsNum: 3, // 選択肢数を設定するデータ
             questionDesc: '', // クイズの説明文
             userName: null, // 入力されたプレイヤーの名前を格納
+            defaultName: '名無し', // 名前が入力されなかったときのデフォルト名
             isChecked: false, // チェックの有無
             isSelected: false, // チェックの有無
             totalPoints: 0, // 正解数
             checkedItem: [], // 選択した選択肢を格納するデータ
             selectedItem: [], // 選択した選択肢一覧を格納するデータ
             fixedSelectItems: [], // 選択した選択肢のうちを正解のみを格納する配列
+            imgSrc: 'question-img', // 画像ファイルの共通パス
             questionList: [ // 問題情報
                 {
                     id: 1, // 問題番号
-                    question: 'あああ?', // 問題文
+                    question: 'あああ？', // 問題文
                     options: [ // 選択肢情報
                         {
                             id: 1, // 選択肢番号
@@ -169,7 +185,7 @@ export default {
                 },
                 {
                     id: 2, // 問題番号
-                    question: 'えええ?', // 問題文
+                    question: 'えええ？', // 問題文
                     options: [ // 選択肢情報
                         {
                             id: 1, // 選択肢番号
@@ -190,7 +206,7 @@ export default {
                 },
                 {
                     id: 3, // 問題番号
-                    question: 'ききき?', // 問題文
+                    question: 'ききき？', // 問題文
                     options: [ // 選択肢情報
                         {
                             id: 1, // 選択肢番号
@@ -211,7 +227,7 @@ export default {
                 },
                 {
                     id: 4, // 問題番号
-                    question: 'こここ?', // 問題文
+                    question: 'こここ？', // 問題文
                     options: [ // 選択肢情報
                         {
                             id: 1, // 選択肢番号
@@ -232,7 +248,7 @@ export default {
                 },
                 {
                     id: 5, // 問題番号
-                    question: 'すすす?', // 問題文
+                    question: 'すすす？', // 問題文
                     options: [ // 選択肢情報
                         {
                             id: 1, // 選択肢番号
@@ -296,8 +312,14 @@ export default {
 </script>
 
 <style lang="scss">
+    .v-btn {
+        &--disabled {
+            opacity: .6;
+        }
+    }
+
     .quiz {
-        max-width: 500px;
+        max-width: 400px;
         margin: 50px auto 0;
         width: 100%;
 
@@ -311,6 +333,13 @@ export default {
             &.active {
                 display: block;
             }
+        }
+    }
+
+    .selected {
+        &__list {
+            list-style: none;
+            padding-left: 0 !important;
         }
     }
 </style>
