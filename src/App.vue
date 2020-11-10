@@ -37,16 +37,12 @@
             v-else-if="currentNum > 0 && currentNum <= questionNum"
             >
                 <div
-                v-for="(question, index) in questionList"
+                v-for="question in questionList"
                 :key="question.id"
                 :class='{ "active": currentNum === question.id }'
                 class="quiz-question"
                 >
                 <v-card-title>{{ question.question }}</v-card-title>
-                <v-img
-                width="200"
-                :src="'/vuecli-quiz/img/' + imgSrc + '-' + (index + 1) + '.jpg'">
-                </v-img>
                 <v-card-text>
                     <div
                     v-for="(option, index) in question.options"
