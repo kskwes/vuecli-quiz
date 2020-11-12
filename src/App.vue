@@ -27,7 +27,7 @@
                         color="white"
                         class="teal accent-4 font-weight-bold"
                         text
-                        @click="getStartQuiz()"
+                        @click="addCurrentNum()"
                     >
                         スタート
                     </v-btn>
@@ -37,7 +37,7 @@
             <!-- クイズページ -->
             <v-card
             class="quiz-container"
-            v-else-if="currentNum > 0 && currentNum <= questionNum"
+            v-else-if="currentNum > 0 && currentNum <= questionList.length"
             >
                 <div
                 v-for="question in questionList"
@@ -77,7 +77,7 @@
                     text
                     @click="getNextQuiz()"
                     :disabled="!isChecked"
-                    v-if="currentNum > 0 && currentNum <= (questionNum - 1)"
+                    v-if="currentNum > 0 && currentNum <= (questionList.length - 1)"
                     >
                         次へ
                     </v-btn>
@@ -87,7 +87,7 @@
                     class="cyan accent-4 font-weight-bold"
                     text
                     @click="getResultQuiz()"
-                    v-else-if="currentNum >= questionNum"
+                    v-else-if="currentNum >= questionList.length"
                     >
                         結果
                     </v-btn>
@@ -97,11 +97,11 @@
             <!-- 結果ページ -->
             <v-card
             class="quiz-container"
-            v-else-if="currentNum > questionNum"
+            v-else-if="currentNum > questionList.length"
             >
                 <v-card-title>結果ページ</v-card-title>
                 <v-card-text>
-                    <div>
+                    <div class="mb-2">
                         <span v-if="userName !== null">{{ userName }}さん</span>
                         <span v-else>{{ defaultName }}さん</span>
                         は
@@ -112,11 +112,11 @@
                         <p>あなたの回答</p>
                         <ul class="selected__list">
                             <li
-                            v-for="item in selectedItem"
+                            v-for="(item, index) in selectedItem"
                             class="selected__item"
                             :key="item.uniqueId"
                             >
-                            {{ item.option }}
+                            問題{{ index + 1 }}: {{ item.option }}
                             <span
                             v-if="item.isCorrect"
                             class="font-weight-bold"
@@ -149,8 +149,6 @@ export default {
     data() {
         return {
             currentNum: 0, // 何番目の問題か判断するデータ
-            questionNum: 5, // 問題数を設定するデータ
-            optionsNum: 3, // 選択肢数を設定するデータ
             questionTitle: '三択クイズ', // クイズのタイトル
             questionDesc: '選択肢から回答を選んで次へを押す', // クイズの説明文
             userName: null, // 入力されたプレイヤーの名前を格納
@@ -287,12 +285,12 @@ export default {
     },
     methods: {
         // スタートボタンの処理
-        getStartQuiz: function() {
+        addCurrentNum: function() {
             this.currentNum ++
         },
         // 問題を進める処理
         getNextQuiz: function() {
-            this.getStartQuiz()
+            this.addCurrentNum()
             this.isChecked = false
 
             this.selectedItem.push(this.checkedItem)
@@ -317,7 +315,7 @@ export default {
             this.selectedItem = []
             this.fixedSelectItems = []
         },
-        // 回答チェック
+        // 選択肢をチェックしてるかどうかの状態を取得
         checkState: function() {
             this.isChecked = true
         }
@@ -332,14 +330,16 @@ export default {
         }
     }
 
+    .v-application {
+        p {
+            margin-bottom: 0 !important;
+        }
+    }
+
     .quiz {
         max-width: 400px;
         margin: 50px auto 0;
         width: 100%;
-
-        &-container {
-            
-        }
 
         &-question {
             display: none;
