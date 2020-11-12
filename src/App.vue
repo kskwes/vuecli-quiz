@@ -8,8 +8,11 @@
             class="quiz-container"
             v-if="currentNum <= 0"
             >
-                <v-card-title>三択クイズ</v-card-title>
+                <v-card-title>{{ questionTitle }}</v-card-title>
                 <v-card-text>
+                    <div>
+                        {{ questionDesc }}
+                    </div>
                     <div>
                         <v-text-field
                         v-model="userName"
@@ -45,23 +48,24 @@
                 <v-card-title>{{ question.question }}</v-card-title>
                 <v-card-text>
                     <div
-                    v-for="(option, index) in question.options"
+                    v-for="option in question.options"
                     :key="option.id"
                     >
                         <input
                         type="radio"
-                        :id="option.option"
+                        :id="option.uniqueId"
                         :value="option"
                         v-model="checkedItem"
                         @click="checkState()"
-                        :class="{ 'isSelected': checkedItem === option.option }"
                         >
                         <label
-                        :for="option.option"
+                        :for="option.uniqueId"
+                        :class="{ 'isSelected': checkedItem === option, 'isChecked': isChecked }"
                         >
-                            {{ index + 1 }}, {{ option.option }}
+                            {{ option.option }}
                         </label>
                     </div>
+
                 </v-card-text>
                 </div>
 
@@ -110,7 +114,7 @@
                             <li
                             v-for="item in selectedItem"
                             class="selected__item"
-                            :key="item.option"
+                            :key="item.uniqueId"
                             >
                             {{ item.option }}
                             <span
@@ -147,11 +151,11 @@ export default {
             currentNum: 0, // 何番目の問題か判断するデータ
             questionNum: 5, // 問題数を設定するデータ
             optionsNum: 3, // 選択肢数を設定するデータ
-            questionDesc: '', // クイズの説明文
+            questionTitle: '三択クイズ', // クイズのタイトル
+            questionDesc: '選択肢から回答を選んで次へを押す', // クイズの説明文
             userName: null, // 入力されたプレイヤーの名前を格納
             defaultName: '名無し', // 名前が入力されなかったときのデフォルト名
             isChecked: false, // チェックの有無
-            isSelected: false, // チェックの有無
             totalPoints: 0, // 正解数
             checkedItem: [], // 選択した選択肢を格納するデータ
             selectedItem: [], // 選択した選択肢一覧を格納するデータ
@@ -160,106 +164,121 @@ export default {
             questionList: [ // 問題情報
                 {
                     id: 1, // 問題番号
-                    question: 'あああ？', // 問題文
+                    question: '問題1', // 問題文
                     options: [ // 選択肢情報
                         {
                             id: 1, // 選択肢番号
-                            option: 'あああ', // 選択肢
-                            isCorrect: true// 選択肢の正誤
+                            option: '選択肢1', // 選択肢
+                            isCorrect: true, // 選択肢の正誤
+                            uniqueId: 1
                         },
                         {
                             id: 2, // 選択肢番号
-                            option: 'いいい', // 選択肢
-                            isCorrect: false// 選択肢の正誤
+                            option: '選択肢2', // 選択肢
+                            isCorrect: false, // 選択肢の正誤
+                            uniqueId: 2
                         },
                         {
                             id: 3, // 選択肢番号
-                            option: 'ううう', // 選択肢
-                            isCorrect: false// 選択肢の正誤
+                            option: '選択肢3', // 選択肢
+                            isCorrect: false, // 選択肢の正誤
+                            uniqueId: 3
                         },
                     ]
                 },
                 {
                     id: 2, // 問題番号
-                    question: 'えええ？', // 問題文
+                    question: '問題2', // 問題文
                     options: [ // 選択肢情報
                         {
                             id: 1, // 選択肢番号
-                            option: 'えええ', // 選択肢
-                            isCorrect: true// 選択肢の正誤
+                            option: '選択肢1', // 選択肢
+                            isCorrect: true, // 選択肢の正誤
+                            uniqueId: 4
                         },
                         {
                             id: 2, // 選択肢番号
-                            option: 'おおお', // 選択肢
-                            isCorrect: false// 選択肢の正誤
+                            option: '選択肢2', // 選択肢
+                            isCorrect: false, // 選択肢の正誤
+                            uniqueId: 5
                         },
                         {
                             id: 3, // 選択肢番号
-                            option: 'かかか', // 選択肢
-                            isCorrect: false// 選択肢の正誤
+                            option: '選択肢3', // 選択肢
+                            isCorrect: false, // 選択肢の正誤
+                            uniqueId: 6
                         },
                     ]
                 },
                 {
                     id: 3, // 問題番号
-                    question: 'ききき？', // 問題文
+                    question: '問題3', // 問題文
                     options: [ // 選択肢情報
                         {
                             id: 1, // 選択肢番号
-                            option: 'ききき', // 選択肢
-                            isCorrect: true// 選択肢の正誤
+                            option: '選択肢1', // 選択肢
+                            isCorrect: true, // 選択肢の正誤
+                            uniqueId: 7
                         },
                         {
                             id: 2, // 選択肢番号
-                            option: 'くくく', // 選択肢
-                            isCorrect: false// 選択肢の正誤
+                            option: '選択肢2', // 選択肢
+                            isCorrect: false, // 選択肢の正誤
+                            uniqueId: 8
                         },
                         {
                             id: 3, // 選択肢番号
-                            option: 'けけけ', // 選択肢
-                            isCorrect: false// 選択肢の正誤
+                            option: '選択肢3', // 選択肢
+                            isCorrect: false, // 選択肢の正誤
+                            uniqueId: 9
                         },
                     ]
                 },
                 {
                     id: 4, // 問題番号
-                    question: 'こここ？', // 問題文
+                    question: '問題4', // 問題文
                     options: [ // 選択肢情報
                         {
                             id: 1, // 選択肢番号
-                            option: 'こここ', // 選択肢
-                            isCorrect: true// 選択肢の正誤
+                            option: '選択肢1', // 選択肢
+                            isCorrect: true, // 選択肢の正誤
+                            uniqueId: 10
                         },
                         {
                             id: 2, // 選択肢番号
-                            option: 'さささ', // 選択肢
-                            isCorrect: false// 選択肢の正誤
+                            option: '選択肢2', // 選択肢
+                            isCorrect: false, // 選択肢の正誤
+                            uniqueId: 11
                         },
                         {
                             id: 3, // 選択肢番号
-                            option: 'ししし', // 選択肢
-                            isCorrect: false// 選択肢の正誤
+                            option: '選択肢3', // 選択肢
+                            isCorrect: false, // 選択肢の正誤
+                            uniqueId: 12
                         },
                     ]
                 },
                 {
                     id: 5, // 問題番号
-                    question: 'すすす？', // 問題文
+                    question: '問題5', // 問題文
                     options: [ // 選択肢情報
                         {
                             id: 1, // 選択肢番号
-                            option: 'すすす', // 選択肢
-                            isCorrect: true// 選択肢の正誤
+                            option: '選択肢1', // 選択肢
+                            isCorrect: true, // 選択肢の正誤
+                            uniqueId: 13
                         },
                         {
                             id: 2, // 選択肢番号
-                            option: 'せせせ', // 選択肢
-                            isCorrect: false// 選択肢の正誤
+                            option: '選択肢2', // 選択肢
+                            isCorrect: false, // 選択肢の正誤
+                            uniqueId: 14
                         },
                         {
                             id: 3, // 選択肢番号
-                            option: 'そそそ', // 選択肢
-                            isCorrect: false// 選択肢の正誤
+                            option: '選択肢3', // 選択肢
+                            isCorrect: false, // 選択肢の正誤
+                            uniqueId: 15
                         },
                     ]
                 },
@@ -293,7 +312,6 @@ export default {
             this.currentNum = 0
             this.userName = null
             this.isChecked = false
-            this.isSelected = false
             this.totalPoints = 0
             this.checkedItem = []
             this.selectedItem = []
@@ -329,6 +347,15 @@ export default {
             &.active {
                 display: block;
             }
+        }
+
+        .isChecked {
+            opacity: .4;
+        }
+
+        .isSelected {
+            font-weight: bold;
+            opacity: 1;
         }
     }
 
