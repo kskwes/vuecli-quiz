@@ -18,6 +18,9 @@ module.exports = {
 `npm run build`
 
 ## 仕様
+### demo
+https://kskwes.github.io/vuecli-quiz/
+
 - 合計5問の3択問題
 - 最後に合計正解数を表示
 - 問題は```questionList```に格納
