@@ -168,19 +168,19 @@ export default {
                             id: 1, // 選択肢番号
                             option: '選択肢1', // 選択肢
                             isCorrect: true, // 選択肢の正誤
-                            uniqueId: 1
+                            uniqueId: 1 // 何問目何番目の選択肢かどうかの識別番号
                         },
                         {
                             id: 2, // 選択肢番号
                             option: '選択肢2', // 選択肢
                             isCorrect: false, // 選択肢の正誤
-                            uniqueId: 2
+                            uniqueId: 2 // 何問目何番目の選択肢かどうかの識別番号
                         },
                         {
                             id: 3, // 選択肢番号
                             option: '選択肢3', // 選択肢
                             isCorrect: false, // 選択肢の正誤
-                            uniqueId: 3
+                            uniqueId: 3 // 何問目何番目の選択肢かどうかの識別番号
                         },
                     ]
                 },
@@ -192,19 +192,19 @@ export default {
                             id: 1, // 選択肢番号
                             option: '選択肢1', // 選択肢
                             isCorrect: true, // 選択肢の正誤
-                            uniqueId: 4
+                            uniqueId: 4 // 何問目何番目の選択肢かどうかの識別番号
                         },
                         {
                             id: 2, // 選択肢番号
                             option: '選択肢2', // 選択肢
                             isCorrect: false, // 選択肢の正誤
-                            uniqueId: 5
+                            uniqueId: 5 // 何問目何番目の選択肢かどうかの識別番号
                         },
                         {
                             id: 3, // 選択肢番号
                             option: '選択肢3', // 選択肢
                             isCorrect: false, // 選択肢の正誤
-                            uniqueId: 6
+                            uniqueId: 6 // 何問目何番目の選択肢かどうかの識別番号
                         },
                     ]
                 },
@@ -216,19 +216,19 @@ export default {
                             id: 1, // 選択肢番号
                             option: '選択肢1', // 選択肢
                             isCorrect: true, // 選択肢の正誤
-                            uniqueId: 7
+                            uniqueId: 7 // 何問目何番目の選択肢かどうかの識別番号
                         },
                         {
                             id: 2, // 選択肢番号
                             option: '選択肢2', // 選択肢
                             isCorrect: false, // 選択肢の正誤
-                            uniqueId: 8
+                            uniqueId: 8 // 何問目何番目の選択肢かどうかの識別番号
                         },
                         {
                             id: 3, // 選択肢番号
                             option: '選択肢3', // 選択肢
                             isCorrect: false, // 選択肢の正誤
-                            uniqueId: 9
+                            uniqueId: 9 // 何問目何番目の選択肢かどうかの識別番号
                         },
                     ]
                 },
@@ -240,19 +240,19 @@ export default {
                             id: 1, // 選択肢番号
                             option: '選択肢1', // 選択肢
                             isCorrect: true, // 選択肢の正誤
-                            uniqueId: 10
+                            uniqueId: 10 // 何問目何番目の選択肢かどうかの識別番号
                         },
                         {
                             id: 2, // 選択肢番号
                             option: '選択肢2', // 選択肢
                             isCorrect: false, // 選択肢の正誤
-                            uniqueId: 11
+                            uniqueId: 11 // 何問目何番目の選択肢かどうかの識別番号
                         },
                         {
                             id: 3, // 選択肢番号
                             option: '選択肢3', // 選択肢
                             isCorrect: false, // 選択肢の正誤
-                            uniqueId: 12
+                            uniqueId: 12 // 何問目何番目の選択肢かどうかの識別番号
                         },
                     ]
                 },
@@ -264,19 +264,19 @@ export default {
                             id: 1, // 選択肢番号
                             option: '選択肢1', // 選択肢
                             isCorrect: true, // 選択肢の正誤
-                            uniqueId: 13
+                            uniqueId: 13 // 何問目何番目の選択肢かどうかの識別番号
                         },
                         {
                             id: 2, // 選択肢番号
                             option: '選択肢2', // 選択肢
                             isCorrect: false, // 選択肢の正誤
-                            uniqueId: 14
+                            uniqueId: 14 // 何問目何番目の選択肢かどうかの識別番号
                         },
                         {
                             id: 3, // 選択肢番号
                             option: '選択肢3', // 選択肢
                             isCorrect: false, // 選択肢の正誤
-                            uniqueId: 15
+                            uniqueId: 15 // 何問目何番目の選択肢かどうかの識別番号
                         },
                     ]
                 },

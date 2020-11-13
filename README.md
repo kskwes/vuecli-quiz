@@ -34,7 +34,7 @@ questionList: [ // 問題情報
                 id: 1, // 選択肢番号
                 option: '選択肢1', // 選択肢
                 isCorrect: true, // 選択肢の正誤
-                uniqueId: 1
+                uniqueId: 1 // 何問目何番目の選択肢かどうかの識別番号
             },
         ]
     },
