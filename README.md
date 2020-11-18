@@ -41,6 +41,6 @@ questionList: [ // 問題情報
 ]
 ```
 
-## 使ったもの
+## 使ったツール
 - Vue-Cli
 - Vuetify
