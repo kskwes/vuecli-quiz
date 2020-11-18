@@ -339,6 +339,7 @@ export default {
     .quiz {
         max-width: 400px;
         margin: 50px auto 0;
+        padding: 10px;
         width: 100%;
 
         &-question {
