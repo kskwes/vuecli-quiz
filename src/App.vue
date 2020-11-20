@@ -1,5 +1,6 @@
 <template>
     <v-app>
+        <!-- <quizData/> -->
         <div class="quiz">
             <!-- スタートページ -->
             <v-card
@@ -145,7 +146,12 @@
 </template>
 
 <script>
+// import quizData from './components/quizData.vue'
+
 export default {
+    // components: {
+    //     quizData
+    // },
     data() {
         return {
             currentNum: 0, // 何番目の問題か判断するデータ
