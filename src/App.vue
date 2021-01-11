@@ -87,6 +87,7 @@
                     class="cyan accent-4 font-weight-bold"
                     text
                     @click="getResultQuiz()"
+                    :disabled="!isChecked"
                     v-else-if="currentNum >= questionList.length"
                     >
                         結果
